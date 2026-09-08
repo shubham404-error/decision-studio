@@ -1,0 +1,9 @@
+.streamlit/secrets.toml
+__pycache__/
+.pytest_cache/
+*.py[cod]
+.env
+*.csv
+*.png
+*.jpg
+*.jpeg
