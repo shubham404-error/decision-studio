@@ -443,36 +443,58 @@ def main_page():
 
 def guide_page():
     st.title("User Guide: Decision Studio")
+    st.markdown("Welcome to **CapitalSense Decision Studio**. This application provides institutional-grade mathematical models for evaluating complex financial decisions.")
     
-    st.markdown("""
-    Welcome to CapitalSense Decision Studio. This application provides institutional-grade mathematical models for evaluating complex financial decisions.
+    st.divider()
     
-    ### 📺 Quick Demo
-    """)
+    st.subheader("📺 Quick Demo")
+    st.image("gif.gif", use_container_width=True)
     
-    st.image("gif.gif")
+    st.divider()
+    
+    tab1, tab2, tab3 = st.tabs(["🧭 Navigation & Calculators", "🔒 Privacy & Inputs", "💡 Best Practices"])
+    
+    with tab1:
+        st.info("**Step 1:** Click on **Decision Studio** in the main sidebar on the left.\n\n**Step 2:** Use the **inner sidebar menu** to switch between different tools.")
+        
+        st.markdown("#### 🛠️ Core Tools")
+        col1, col2 = st.columns(2)
+        with col1:
+            with st.container(border=True):
+                st.markdown("**📈 Portfolio Health Check**")
+                st.caption("Review returns, concentration, drawdown risk, and diversification.")
+            with st.container(border=True):
+                st.markdown("**💰 Value a Stock (DCF)**")
+                st.caption("Calculate the intrinsic value of an asset based on projected future cash flows.")
+            with st.container(border=True):
+                st.markdown("**📉 Trade Plan**")
+                st.caption("Structure entry/exit strategy and position sizing based on your risk.")
+                
+        with col2:
+            with st.container(border=True):
+                st.markdown("**🏛️ Sell / Tax-Aware Return**")
+                st.caption("Project tax implications to optimize short vs. long-term capital gains.")
+            with st.container(border=True):
+                st.markdown("**🎯 Goals & Retirement**")
+                st.caption("Determine SIP or lumpsum investment needed for a specific target.")
+                
+    with tab2:
+        st.success("**Privacy First:** Your uploaded CSVs and data remain entirely in your browser session. We do not store your financial data permanently.")
+        
+        st.markdown("#### Input Methods")
+        with st.expander("📄 AI Document Parser", expanded=True):
+            st.write("Securely upload images of your holdings or transactions, and our Gemini AI will extract the financial records directly for the calculators.")
+        with st.expander("⌨️ Manual Inputs", expanded=True):
+            st.write("Each module allows you to fine-tune specific numeric inputs like Growth Rate, Discount Rate, and Target Amount.")
 
-    st.markdown("""
-    ### 🧭 How to Navigate
-    1. Click on **Decision Studio** in the main sidebar on the left.
-    2. Once inside the Decision Studio, use the **inner sidebar menu** (Home, Portfolio Health Check, Goals & Retirement, etc.) to switch between different calculators and tools.
-    
-    ### 🛠️ Core Calculators
-    - **Portfolio Health Check:** Upload a CSV of your holdings to instantly review returns, concentration, drawdown risk, and diversification.
-    - **Value a Stock (DCF):** Calculate the intrinsic value of an asset based on projected future cash flows and your required rate of return.
-    - **Sell / Tax-Aware Return:** Project the tax implications of selling an asset, helping you optimize for short-term vs. long-term capital gains brackets.
-    - **Goals & Retirement:** Determine the required monthly SIP or lumpsum investment needed to reach a specific financial target by a certain date.
-    - **Trade Plan:** Structure a complete entry/exit strategy including position sizing based on your risk tolerance and stop-loss levels.
-    
-    ### ⌨️ Required Inputs & Privacy
-    - **Session-Only Data:** Your uploaded CSVs and data remain entirely in your browser session. We do not store your financial data permanently.
-    - **AI Document Parser:** You can securely upload images of your holdings/transactions, and the Gemini AI will extract the financial records for the calculators.
-    - **Manual Inputs:** Each module requires specific numeric inputs (e.g., Growth Rate, Discount Rate, Target Amount).
-    
-    ### 💡 Best Practices
-    - **Review Assumptions:** Always expand the **Assumptions, data quality, and limitations** section under every calculation result. The math is deterministic, but garbage inputs yield garbage outputs.
-    - **AI Explainer:** Use the built-in AI Explainer to understand *what* is driving the mathematical result and *what* could change it. 
-    """)
+    with tab3:
+        st.warning("**Garbage In, Garbage Out:** The math is deterministic. Always ensure your inputs are accurate.")
+        
+        st.markdown("#### Tips for Success")
+        st.markdown("""
+        - 🔍 **Review Assumptions:** Always check the *Assumptions, data quality, and limitations* section under every calculation result.
+        - 🤖 **AI Explainer:** Use the built-in AI Explainer to understand exactly *what* is driving the mathematical result and *how* to interpret it.
+        """)
 
 pages = {
     "Start": [
