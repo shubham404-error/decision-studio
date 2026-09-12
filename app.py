@@ -446,17 +446,17 @@ def guide_page():
     st.markdown("""
     Welcome to CapitalSense Decision Studio. This application provides institutional-grade mathematical models for evaluating complex financial decisions.
     
-    ### ?? Intended Outputs
+    ### 🎯 Intended Outputs
     - **Discounted Cash Flow (DCF):** Calculates the intrinsic value of an asset based on projected future cash flows and your required rate of return.
     - **Capital Gains Estimator:** Projects the tax implications of selling an asset, helping you optimize for short-term vs long-term capital gains brackets.
     - **Goal Planning:** Determines the required monthly SIP or lumpsum investment needed to reach a specific financial target by a certain date.
     - **Trade Plan:** Structures a complete entry/exit strategy including position sizing based on your risk tolerance and stop-loss levels.
     
-    ### ?? Required Inputs
+    ### ⌨️ Required Inputs
     - **AI Document Parser:** You can securely upload images of your holdings/transactions, and the Gemini AI will extract the financial records for the calculators.
     - **Manual Inputs:** Each module requires specific numeric inputs (e.g., Growth Rate, Discount Rate, Target Amount).
     
-    ### ?? Best Practices
+    ### 💡 Best Practices
     - Always review the **Assumptions, data quality, and limitations** expander under every calculation result. The math is deterministic, but garbage inputs yield garbage outputs.
     - Use the AI Explainer to understand *what* is driving the mathematical result and *what* could change it.
     """)
