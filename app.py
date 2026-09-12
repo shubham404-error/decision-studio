@@ -450,7 +450,7 @@ def guide_page():
     ### 📺 Quick Demo
     """)
     
-    st.image("gif.gif", caption="Decision Studio Demo")
+    st.image("gif.gif")
 
     st.markdown("""
     ### 🧭 How to Navigate
