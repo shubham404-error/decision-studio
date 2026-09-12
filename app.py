@@ -443,22 +443,35 @@ def main_page():
 
 def guide_page():
     st.title("User Guide: Decision Studio")
+    
     st.markdown("""
     Welcome to CapitalSense Decision Studio. This application provides institutional-grade mathematical models for evaluating complex financial decisions.
     
-    ### 🎯 Intended Outputs
-    - **Discounted Cash Flow (DCF):** Calculates the intrinsic value of an asset based on projected future cash flows and your required rate of return.
-    - **Capital Gains Estimator:** Projects the tax implications of selling an asset, helping you optimize for short-term vs long-term capital gains brackets.
-    - **Goal Planning:** Determines the required monthly SIP or lumpsum investment needed to reach a specific financial target by a certain date.
-    - **Trade Plan:** Structures a complete entry/exit strategy including position sizing based on your risk tolerance and stop-loss levels.
+    ### 📺 Quick Demo
+    """)
     
-    ### ⌨️ Required Inputs
+    st.image("https://media.giphy.com/media/l0HlHFRbmaZtBRhXG/giphy.gif", caption="Decision Studio Demo (Replace with your own GIF)")
+
+    st.markdown("""
+    ### 🧭 How to Navigate
+    1. Click on **Decision Studio** in the main sidebar on the left.
+    2. Once inside the Decision Studio, use the **inner sidebar menu** (Home, Portfolio Health Check, Goals & Retirement, etc.) to switch between different calculators and tools.
+    
+    ### 🛠️ Core Calculators
+    - **Portfolio Health Check:** Upload a CSV of your holdings to instantly review returns, concentration, drawdown risk, and diversification.
+    - **Value a Stock (DCF):** Calculate the intrinsic value of an asset based on projected future cash flows and your required rate of return.
+    - **Sell / Tax-Aware Return:** Project the tax implications of selling an asset, helping you optimize for short-term vs. long-term capital gains brackets.
+    - **Goals & Retirement:** Determine the required monthly SIP or lumpsum investment needed to reach a specific financial target by a certain date.
+    - **Trade Plan:** Structure a complete entry/exit strategy including position sizing based on your risk tolerance and stop-loss levels.
+    
+    ### ⌨️ Required Inputs & Privacy
+    - **Session-Only Data:** Your uploaded CSVs and data remain entirely in your browser session. We do not store your financial data permanently.
     - **AI Document Parser:** You can securely upload images of your holdings/transactions, and the Gemini AI will extract the financial records for the calculators.
     - **Manual Inputs:** Each module requires specific numeric inputs (e.g., Growth Rate, Discount Rate, Target Amount).
     
     ### 💡 Best Practices
-    - Always review the **Assumptions, data quality, and limitations** expander under every calculation result. The math is deterministic, but garbage inputs yield garbage outputs.
-    - Use the AI Explainer to understand *what* is driving the mathematical result and *what* could change it.
+    - **Review Assumptions:** Always expand the **Assumptions, data quality, and limitations** section under every calculation result. The math is deterministic, but garbage inputs yield garbage outputs.
+    - **AI Explainer:** Use the built-in AI Explainer to understand *what* is driving the mathematical result and *what* could change it. 
     """)
 
 pages = {
