@@ -463,10 +463,10 @@ def guide_page():
 
 pages = {
     "Start": [
-        st.Page(guide_page, title="User Guide", icon="??", default=True)
+        st.Page(guide_page, title="User Guide", icon="📖", default=True)
     ],
     "Calculators": [
-        st.Page(main_page, title="Decision Studio", icon="??")
+        st.Page(main_page, title="Decision Studio", icon="🧮")
     ]
 }
 
