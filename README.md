@@ -1,6 +1,8 @@
-# CapitalSense Decision Studio
+# Paisaan by CapitalSense
 
 A public, Streamlit Community Cloud-ready decision-support MVP for self-directed Indian investors.
+
+**Pehchaan your money first. Then plan the next move.** The optional in-app “Paisaan mode” uses light, meme-inspired cues while preserving a sober, explain-then-guide decision experience.
 
 ## What it includes
 
