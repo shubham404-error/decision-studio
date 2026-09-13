@@ -449,21 +449,29 @@ def guide_page():
 
     st.markdown('<div class="cs-note"><b>🧭 Navigation:</b> Click on <b>Decision Studio</b> in the main sidebar. Once inside, use the inner menu to switch between calculators.</div><br>', unsafe_allow_html=True)
     
-    st.markdown("""
-    ### 🛠️ Core Calculators
-    - **Portfolio Health Check:** Upload a CSV of your holdings to review returns, concentration, drawdown risk, and diversification.
-    - **Value a Stock (DCF):** Calculate the intrinsic value of an asset based on projected future cash flows and your required rate of return.
-    - **Sell / Tax-Aware Return:** Project tax implications to optimize short-term vs. long-term capital gains.
-    - **Goals & Retirement:** Determine the required monthly SIP or lumpsum investment needed for a specific target.
-    - **Trade Plan:** Structure entry/exit strategy and position sizing based on your risk tolerance.
+    st.markdown("### 🛠️ Core Calculators")
     
-    ### ⌨️ Required Inputs & Privacy
+    choices = [
+        ("📈 Portfolio Health Check", "Upload a CSV of your holdings to review returns, concentration, drawdown risk, and diversification."),
+        ("💰 Value a Stock (DCF)", "Calculate the intrinsic value of an asset based on projected future cash flows and your required rate of return."),
+        ("🏛️ Sell / Tax-Aware Return", "Project tax implications to optimize short-term vs. long-term capital gains brackets."),
+        ("🎯 Goals & Retirement", "Determine the required monthly SIP or lumpsum investment needed for a specific target."),
+        ("📉 Trade Plan", "Structure entry/exit strategy and position sizing based on your risk tolerance."),
+    ]
+    
+    for index in range(0, len(choices), 2):
+        cols = st.columns(2)
+        for col, (name, desc) in zip(cols, choices[index:index + 2]):
+            with col:
+                st.markdown(f'<div class="cs-card" style="margin-bottom: 1rem;"><b>{name}</b><br><br><span style="color:#a0aec0; font-size:0.9rem;">{desc}</span></div>', unsafe_allow_html=True)
+                
+    st.write("")
+    
+    st.markdown("### 🔒 Inputs & Best Practices")
+    st.markdown("""
     - **Session-Only Data:** Your uploaded CSVs and data remain entirely in your browser session. We do not store your financial data permanently.
     - **AI Document Parser:** Securely upload images of holdings/transactions, and Gemini AI will extract the financial records.
-    - **Manual Inputs:** Each module requires specific numeric inputs (e.g., Growth Rate, Discount Rate).
-    
-    ### 💡 Best Practices
-    - **Review Assumptions:** Always expand the **Assumptions, data quality, and limitations** section under results. The math is deterministic; garbage inputs yield garbage outputs.
+    - **Garbage In, Garbage Out:** Always expand the *Assumptions, data quality, and limitations* section under results. The math is deterministic.
     - **AI Explainer:** Use the built-in AI Explainer to understand *what* is driving the result and *what* could change it. 
     """)
 
