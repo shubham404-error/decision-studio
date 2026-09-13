@@ -492,7 +492,9 @@ def guide_page():
     </div>
     """, unsafe_allow_html=True)
     
-    st.image("gif.gif")
+    col_l, col_c, col_r = st.columns([1, 2, 1])
+    with col_c:
+        st.image("gif.gif")
     st.write("")
     
     st.markdown("<h2 style='font-family: \"Clash Display\", sans-serif; margin-bottom: 1.5rem;'>Core Calculators</h2>", unsafe_allow_html=True)
