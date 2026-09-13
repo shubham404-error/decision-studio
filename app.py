@@ -442,38 +442,152 @@ def main_page():
     
 
 def guide_page():
-    st.markdown('<div class="cs-hero"><div class="cs-kicker">User Guide</div><h1>Decision Studio</h1><p>Institutional-grade mathematical models for evaluating complex financial decisions.</p></div>', unsafe_allow_html=True)
+    st.markdown("""
+    <style>
+    .terminal-card {
+        border: 1px solid rgba(255,255,255,0.08); 
+        border-radius: 12px; 
+        padding: 1.5rem; 
+        background: #14161f; 
+        height: 100%;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .terminal-card:hover {
+        border-color: rgba(255,255,255,0.2);
+    }
+    .terminal-icon {
+        font-size: 2rem; 
+        margin-bottom: 0.8rem;
+    }
+    .terminal-title {
+        font-family: 'Clash Display', sans-serif;
+        font-size: 1.3rem; 
+        font-weight: 600; 
+        color: #ffffff; 
+        margin-bottom: 0.5rem;
+    }
+    .terminal-subtitle {
+        font-size: 0.85rem; 
+        font-style: italic; 
+        color: #8c9baf; 
+        margin-bottom: 1rem;
+    }
+    .terminal-text {
+        font-size: 0.9rem; 
+        color: #cbd5e1; 
+        line-height: 1.5;
+    }
+    .highlight {
+        color: #4facfe;
+        font-weight: 600;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+    # Hero Section
+    st.markdown("""
+    <div style="text-align: center; padding: 3rem 1rem 4rem 1rem; background: radial-gradient(circle at top, rgba(20,24,36,0.8) 0%, rgba(15,17,26,0) 70%); border-radius: 12px; margin-bottom: 2rem;">
+        <h1 style="color: #4facfe; font-size: 3.5rem; font-weight: 800; margin-bottom: 0.5rem; font-family: 'Clash Display', sans-serif; letter-spacing: -1px;">Decision Studio</h1>
+        <p style="color: #8c9baf; font-size: 1.1rem; max-width: 650px; margin: 0 auto;">Institutional-grade mathematical models, simplified for retail investors. Measure risk, project returns, and evaluate complex financial decisions with precision.</p>
+    </div>
+    """, unsafe_allow_html=True)
     
     st.image("gif.gif")
     st.write("")
+    
+    st.markdown("<h2 style='font-family: \"Clash Display\", sans-serif; margin-bottom: 1.5rem;'>Core Calculators</h2>", unsafe_allow_html=True)
+    
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        st.markdown("""
+        <div class="terminal-card">
+            <div class="terminal-icon">📈</div>
+            <div class="terminal-title">Portfolio Health Check</div>
+            <div class="terminal-subtitle">Answers: "Is my portfolio too concentrated or risky?"</div>
+            <div class="terminal-text">Upload a CSV of your holdings to instantly review returns, concentration, drawdown risk, and diversification metrics.</div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+    with col2:
+        st.markdown("""
+        <div class="terminal-card">
+            <div class="terminal-icon">💰</div>
+            <div class="terminal-title">DCF Valuation</div>
+            <div class="terminal-subtitle">Answers: "What is the intrinsic value of this asset?"</div>
+            <div class="terminal-text">Calculate the intrinsic value of an asset based on projected future cash flows and your <span class="highlight">required rate of return</span>.</div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+    with col3:
+        st.markdown("""
+        <div class="terminal-card">
+            <div class="terminal-icon">📉</div>
+            <div class="terminal-title">Trade Plan</div>
+            <div class="terminal-subtitle">Answers: "How much should I risk on this trade?"</div>
+            <div class="terminal-text">Structures a complete entry/exit strategy including position sizing based on your <span class="highlight">risk tolerance</span> and stop-loss levels.</div>
+        </div>
+        """, unsafe_allow_html=True)
 
-    st.markdown('<div class="cs-note"><b>🧭 Navigation:</b> Click on <b>Decision Studio</b> in the main sidebar. Once inside, use the inner menu to switch between calculators.</div><br>', unsafe_allow_html=True)
-    
-    st.markdown("### 🛠️ Core Calculators")
-    
-    choices = [
-        ("📈 Portfolio Health Check", "Upload a CSV of your holdings to review returns, concentration, drawdown risk, and diversification."),
-        ("💰 Value a Stock (DCF)", "Calculate the intrinsic value of an asset based on projected future cash flows and your required rate of return."),
-        ("🏛️ Sell / Tax-Aware Return", "Project tax implications to optimize short-term vs. long-term capital gains brackets."),
-        ("🎯 Goals & Retirement", "Determine the required monthly SIP or lumpsum investment needed for a specific target."),
-        ("📉 Trade Plan", "Structure entry/exit strategy and position sizing based on your risk tolerance."),
-    ]
-    
-    for index in range(0, len(choices), 2):
-        cols = st.columns(2)
-        for col, (name, desc) in zip(cols, choices[index:index + 2]):
-            with col:
-                st.markdown(f'<div class="cs-card" style="margin-bottom: 1rem;"><b>{name}</b><br><br><span style="color:#a0aec0; font-size:0.9rem;">{desc}</span></div>', unsafe_allow_html=True)
-                
+    st.write("")
     st.write("")
     
-    st.markdown("### 🔒 Inputs & Best Practices")
-    st.markdown("""
-    - **Session-Only Data:** Your uploaded CSVs and data remain entirely in your browser session. We do not store your financial data permanently.
-    - **AI Document Parser:** Securely upload images of holdings/transactions, and Gemini AI will extract the financial records.
-    - **Garbage In, Garbage Out:** Always expand the *Assumptions, data quality, and limitations* section under results. The math is deterministic.
-    - **AI Explainer:** Use the built-in AI Explainer to understand *what* is driving the result and *what* could change it. 
-    """)
+    st.markdown("<h2 style='font-family: \"Clash Display\", sans-serif; margin-bottom: 1.5rem;'>Planning & Tax Models</h2>", unsafe_allow_html=True)
+    
+    col4, col5 = st.columns(2)
+    
+    with col4:
+        st.markdown("""
+        <div class="terminal-card">
+            <div class="terminal-icon">🎯</div>
+            <div class="terminal-title">Goal Planning</div>
+            <div class="terminal-subtitle">Answers: "How much SIP do I need for my target?"</div>
+            <div class="terminal-text">Determine the required monthly SIP or lumpsum investment needed for a specific financial target. Factors in inflation and <span class="highlight">step-up</span> contributions.</div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+    with col5:
+        st.markdown("""
+        <div class="terminal-card">
+            <div class="terminal-icon">🏛️</div>
+            <div class="terminal-title">Tax-Aware Return</div>
+            <div class="terminal-subtitle">Answers: "What do I actually keep after taxes?"</div>
+            <div class="terminal-text">Project tax implications to optimize <span class="highlight">short-term vs. long-term</span> capital gains brackets before executing a sell decision.</div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+    st.write("")
+    st.write("")
+    
+    st.markdown("<h2 style='font-family: \"Clash Display\", sans-serif; margin-bottom: 1.5rem;'>Inputs & Best Practices</h2>", unsafe_allow_html=True)
+    
+    col6, col7 = st.columns(2)
+    
+    with col6:
+        st.markdown("""
+        <div class="terminal-card">
+            <div class="terminal-icon">🔒</div>
+            <div class="terminal-title">Privacy First Data</div>
+            <div class="terminal-subtitle">Answers: "Where does my uploaded data go?"</div>
+            <div class="terminal-text">
+                <b>Session-Only:</b> Your uploaded CSVs remain entirely in your browser. We do not store your financial data.<br><br>
+                <b>AI Parser:</b> Securely upload images, and Gemini AI will extract the financial records.
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+    with col7:
+        st.markdown("""
+        <div class="terminal-card">
+            <div class="terminal-icon">🚦</div>
+            <div class="terminal-title">Garbage In, Garbage Out</div>
+            <div class="terminal-subtitle">Answers: "How reliable are these results?"</div>
+            <div class="terminal-text">
+                <b>Assumptions:</b> Always expand the limitations section under results. The math is deterministic; bad inputs yield bad outputs.<br><br>
+                <b>AI Explainer:</b> Use the built-in AI Explainer to understand exactly what is driving the result.
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
 
 pages = {
     "Start": [
