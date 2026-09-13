@@ -27,7 +27,7 @@ from services.documents import MAX_IMAGES, parse_holdings_csv, prepare_image
 from services.market_data import fetch_price_history
 
 
-st.set_page_config(page_title="Paisaan by CapitalSense", page_icon="₹", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="Paisaan by CapitalSense", page_icon="💸", layout="wide", initial_sidebar_state="expanded")
 
 st.markdown(
     """
