@@ -1,4 +1,4 @@
-"""Pure financial calculation engines. No Streamlit, network, or file-system calls."""
+"""Financial calculation engines with Streamlit caching for performance under load."""
 
 from __future__ import annotations
 
@@ -9,9 +9,9 @@ from typing import Iterable
 
 import numpy as np
 import pandas as pd
+import streamlit as st
 
 from .contracts import CalculationRequest, CalculationResult
-
 
 NORMAL = NormalDist()
 TRADING_DAYS = 252
@@ -63,6 +63,7 @@ def xirr(cashflows: Iterable[tuple[date, float]]) -> float | None:
     return (low + high) / 2
 
 
+@st.cache_data(ttl=3600)
 def calculate_returns(request: CalculationRequest) -> CalculationResult:
     """Calculate money-weighted and time-weighted outcomes from user-confirmed inputs."""
     raw_flows = request.inputs.get("cashflows", [])
@@ -107,6 +108,7 @@ def calculate_returns(request: CalculationRequest) -> CalculationResult:
     )
 
 
+@st.cache_data(ttl=3600)
 def calculate_portfolio_risk(request: CalculationRequest) -> CalculationResult:
     """Compute portfolio risk statistics from daily portfolio and optional benchmark returns."""
     returns = np.asarray(request.inputs.get("returns", []), dtype=float)
@@ -175,6 +177,7 @@ def calculate_portfolio_risk(request: CalculationRequest) -> CalculationResult:
     )
 
 
+@st.cache_data(ttl=3600)
 def calculate_goal_plan(request: CalculationRequest) -> CalculationResult:
     monthly_sip = max(0.0, _finite(request.inputs.get("monthly_sip")))
     step_up = max(0.0, _finite(request.inputs.get("annual_step_up"))) / 100
@@ -211,6 +214,7 @@ def calculate_goal_plan(request: CalculationRequest) -> CalculationResult:
     )
 
 
+@st.cache_data(ttl=3600)
 def calculate_dcf(request: CalculationRequest) -> CalculationResult:
     fcff = max(0.0, _finite(request.inputs.get("fcff")))
     growth = _finite(request.inputs.get("growth"), 0.12)
@@ -258,6 +262,7 @@ def calculate_dcf(request: CalculationRequest) -> CalculationResult:
     )
 
 
+@st.cache_data(ttl=3600)
 def calculate_capital_gains(request: CalculationRequest) -> CalculationResult:
     buy = max(0.0, _finite(request.inputs.get("purchase_value")))
     sell = max(0.0, _finite(request.inputs.get("sale_value")))
@@ -293,6 +298,7 @@ def _norm_cdf(value: float) -> float:
     return NORMAL.cdf(value)
 
 
+@st.cache_data(ttl=3600)
 def calculate_trade_plan(request: CalculationRequest) -> CalculationResult:
     capital = max(0.0, _finite(request.inputs.get("capital")))
     risk_pct = min(max(_finite(request.inputs.get("risk_percent"), 1.0) / 100, 0.0), 0.1)
